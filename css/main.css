@@ -1959,9 +1959,9 @@ nav {
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Larger grid items */
+  grid-template-columns: repeat(auto-fit, minmax(47vh, 1fr)); /* Larger grid items */
   gap: 2rem; /* More spacing between items */
-  max-width: 1400px; /* Wider container */
+  max-width: 250vh; /* Wider container */
   margin: 0 auto;
 }
 
