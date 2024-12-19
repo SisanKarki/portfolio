@@ -41,6 +41,7 @@
             from_name: document.getElementById("contactName").value,
             subject: document.getElementById("contactSubject").value,
             message: document.getElementById("contactMessage").value,
+						from_email: document.getElementById("contactEmail").value
          };
 
          emailjs.send("service_z9kwx99", "template_uxvk5z6", formData)
