@@ -19,12 +19,51 @@
    ================================================== -->
    <link rel="stylesheet" href="css/base.css">  
    <link rel="stylesheet" href="css/main.css">
-   <link rel="stylesheet" href="css/vendor.css">     
+   <link rel="stylesheet" href="css/vendor.css">  
+	 
+	 	<!--EmailJS
+	======================================================-->
+	
+
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+      // Initialize EmailJS
+      emailjs.init("97-sluaN5ed1pnJN0"); // Replace with your actual public key
+
+      // Add form submission event listener
+      document.getElementById("contact-form").addEventListener("submit", function (event) {
+         event.preventDefault();
+
+         const formData = {
+            to_name: "Sisan Karki",
+            from_name: document.getElementById("contactName").value,
+            subject: document.getElementById("contactSubject").value,
+            message: document.getElementById("contactMessage").value,
+         };
+
+         emailjs.send("service_z9kwx99", "template_uxvk5z6", formData)
+            .then((response) => {
+               console.log("SUCCESS!", response.status, response.text);
+               alert("Message sent successfully!");
+               document.getElementById("contact-form").reset();
+            })
+            .catch((error) => {
+               console.error("FAILED...", error);
+               alert("Failed to send the message. Please try again later.");
+            });
+      });
+   });
+</script>
+
 
    <!-- script
    ================================================== -->   
 	<script src="js/modernizr.js"></script>
 	<script src="js/pace.min.js"></script>
+
+
 
    <!-- favicons
 	================================================== -->
@@ -895,7 +934,7 @@
    		<div class="col-twelve">
 
             <!-- form -->
-            <form name="contactForm" id="contactForm" method="post" action="">
+            <form name="contactForm" id="contact-form" >
       			<fieldset>
 
                   <div class="form-field">
@@ -911,14 +950,15 @@
 	                 	<textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10" cols="50" required=""></textarea>
 	               </div>                      
                  <div class="form-field">
-                     <button class="submitform">Submit</button>
-                     <div id="submit-loader">
+									<input type="submit" id="submit">
+                     <!-- <button class="submitform" id="submit">Submit</button> -->
+                     <!-- <div id="submit-loader">
                         <div class="text-loader">Sending...</div>                             
        				      <div class="s-loader">
 								  	<div class="bounce1"></div>
 								  	<div class="bounce2"></div>
 								  	<div class="bounce3"></div>
-								</div>
+								</div> -->
 							</div>
                   </div>
 
@@ -1011,6 +1051,9 @@
    <div id="preloader"> 
     	<div id="loader"></div>
    </div> 
+
+	
+
 
    <!-- Java Script
    ================================================== --> 
